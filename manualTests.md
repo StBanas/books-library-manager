@@ -44,7 +44,7 @@ User clicks in the "Login" button and the window of the home page of API "Librar
 
 ![img_7.png](booklibrary/static/img/manualTests/img_7.png)</br>
 
-![testPassed.png](static/img/manualTests/testPassed.png)
+![testPassed.png](booklibrary/static/img/manualTests/testPassed.png)
 
 <br>
 
@@ -124,7 +124,7 @@ User can see the "List of books" after the modification:</br>
 ![img_34.png](booklibrary/static/img/manualTests/img_34.png)</br>
 
 
-![testPassed.png](static/img/manualTests/testPassed.png)
+![testPassed.png](booklibrary/static/img/manualTests/testPassed.png)
 
 <br>
 
@@ -211,6 +211,6 @@ Run the "Library" as loged in user and open "List of books" from menu bar
 Compare the list of books at the API and the list from table **books** in **dbase.db**. </br>
 As both lists consists of the same items: </br>
 
-![testPassed.png](static/img/manualTests/testPassed.png)</br>
+![testPassed.png](booklibrary/static/img/manualTests/testPassed.png)</br>
 
 <br>

@@ -16,12 +16,13 @@ and "title" arguments respectively. </br>
 After sucessful implementation of Selenium extension tool into the browser
 (Mozilla Forefox) the "Se" icon will appear at the tool menu
 
-![img_11.png](booklibrary/booklibrary/static/img/seleniumTests/img_11.png)
+![img_11.png](booklibrary/static/img/seleniumTests/img_11.png)
 
 **Step 2.**
-List of books in dbase.db before test:
+List of books in dbase.db before test: 
 
-![img_12.png](booklibrary/static/img/seleniumTests/img_12.png)
+
+![img_12.png](booklibrary/static/img/seleniumTests/img_12.png)<br>
 
 **Step 3.**
 The data expected for transfer are introduced into the Selenium test set:
@@ -39,7 +40,7 @@ The check can be carried out to confirm the data were transfered correctly into 
 
 ![img_19.png](booklibrary/static/img/seleniumTests/img_19.png)
 
-![testPassed.png](static/img/seleniumTests/testPassed.png)
+![testPassed.png](booklibrary/static/img/seleniumTests/testPassed.png)
 
 <br>
 
@@ -75,7 +76,7 @@ List of books in dbase.db after test:
 
 ![img_21.png](booklibrary/static/img/seleniumTests/img_21.png)
 
-![testPassed.png](static/img/seleniumTests/testPassed.png)
+![testPassed.png](booklibrary/static/img/seleniumTests/testPassed.png)
 
 <br>
 
@@ -95,14 +96,14 @@ List of books in **books** table  **dbase.db** before test:
 Run **seleniumAddNewBook.py** </br>
 The result of test executionis shown below: </br>
 
-![img_37.png](booklibrary/static/img/seleniumTests/img_37.png)
+![img_37.png](booklibrary/static/img/seleniumTests/img_37.png)<br>
 
 **Step 3.**
 List of books in "books" table after test:
 
-![img_38.png](booklibrary/static/img/seleniumTests/img_38.png)
+![img_38.png](booklibrary/static/img/seleniumTests/img_38.png)<br>
 
-![testPassed.png](static/img/seleniumTests/testPassed.png)
+![testPassed.png](booklibrary/static/img/seleniumTests/testPassed.png)<br>
 
 <br>
 
