@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<title>Update</title>
+<h4> Update the book data </h4>
+
+<style>
+table tr {
+    color: green;
+    font-weight: bold;
+    hight: 40px;
+}
+table th {color: blue;
+    font-weight: bold;
+    width: 400px;
+    }
+</style>
+
+<form action="" method="POST">
+
+        <tbody>
+            {{ form.hidden_tag() }}
+            <tr>
+                <td>
+                    {{ form.author.label }}
+                </td>
+                <td>
+                    {{ form.author }}
+                    {% for error in form.author.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </td>
+                <td>
+                    {{ form.title.label }}
+                </td>
+                <td>
+                    {{ form.title }}
+                    {% for error in form.title.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th>
+                    {{ form.submit() }}
+                </th>
+            </tr>
+        </tfoot>
+
+</form>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        <a class="ml-2" href="{{ url_for('main.index')}}"> Return to Home Page</a>
+    </small>
+</div>
+{% endblock content %}

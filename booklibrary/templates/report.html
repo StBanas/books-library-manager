@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<h5 xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+    xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"><b><br>
+    Debug of JavaScript code </b></h5>
+
+
+<br>
+The debugging tool is available in every browser. In my case I use Mozilla Firefox 13.2.3 version.
+
+<br>
+Using this browser we can use this tool to
+The tool has an interactive JavaScript console. In it we can test the behavior of our scripts (write and call
+JavaScript right in the console), use it for debugging, and control the
+program flow (simple user interaction).
+<br>
+Third:  Flask as a To ensure the propper quality of the aplication some sort of testing measures were introduced
+at the different stages of code fabrication:
+
+<br>
+<h6>1. During development process basic of Clean Code and other rules were taken into account. <br>
+    As far as it was possible in this relativelly
+    small project among them were SOLID, DRY PA ... ..    <br>
+    The scenario was issued since very beginning of project development:
+
+
+
+
+    <br>
+    <br>
+    1.Chrome <br>
+
+    2. "As Flask is equipped in the inbuild  option of debugging ....
+    "Flask applications can optionally be executed in debug mode. In this mode, two very <br>
+    convenient modules of the development server called the reloader and the debugger<br>
+    are enabled by default.
+    <br>
+    <br>
+    When the reloader is enabled, Flask watches all the source code files of your project
+    and automatically restarts the server when any of the files are modified. Having a
+    server running with the reloader enabled is extremely useful during development,
+    because every time you modify and save a source file, the server automatically restarts
+    and picks up the change.<br>
+    The debugger is a web-based tool that appears in your browser when your application
+    raises an unhandled exception. The web browser window transforms into an interactive
+    stack trace that allows you to inspect source code and evaluate expressions in any
+    place in the call stack. You can see how the debugger looks in Figure 2-3.......
+    By default, debug mode is disabled.
+    <br>To enable it, set a FLASK_DEBUG=1 environment
+    variable before invoking flask run:
+    (venv) $ export FLASK_APP=hello.py
+    (venv) $ export FLASK_DEBUG=1.....
+    To enable
+    debug mode programmatically, use app.run(debug=True).
+    "
+
+    <br>
+    .</h6><br>
+<h6> 2. In order to add new book you can use one of the manners available in <a href="http://127.0.0.1:5000/tests">"Tests "</a> menu.</h6>
+
+
+<h6> You can literally insert required data:</h6>
+
+2.1. Manually testing report - <a href="http://127.0.0.1:5000/help/tests/manual">"Manual"</a><br>
+2.2. Automated tests report - <a href="http://127.0.0.1:5000/help/tests/automated/">"Automated tests"</a><br>
+2.3. From any image accesible from RAM memory - <a href="http://127.0.0.1:5000/help/tests/selenium">"Grab from image"</a><br>
+2.4. From video or camera stream - <a href="http://127.0.0.1:5000/help/tests/">"Capture from video"</a><br><br>
+
+<h6> 3. Few tests were performed accorging to the basic rules of  <a href="http://127.0.0.1:5000/help/tests/TDD">"test driven development"</a> or <a href="http://127.0.0.1:5000/help/tests/DDD">"domain driven developement"</a> the data from the list. </h6> <br>
+<h6> 4. List of collected books can be find in <a href="http://127.0.0.1:5000/help/tests/manual">"List of books"</a> folder.</h6><br>
+<h6> 5. Pressing the button  <a href="http://127.0.0.1:5000/help/tests/manual">"Top 1000"</a> you can find the list of my favourite books.</h6><br>
+<br>
+
+
+{% endblock %}

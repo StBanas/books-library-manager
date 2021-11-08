@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<title>Modify</title>
+
+<h5> Choose mode option</h5>
+<div class="content-section">
+    <div class="form-group">
+    </div>
+
+    <div class="border-top pt-3">
+        <a class="text-muted">
+            <a class="ml-2" href="{{ url_for('booky.addManual') }}"> Add new book manually </a>
+        </a>
+    </div>
+
+    <div class="border-top pt-3">
+        <a class="text-muted">
+            <a class="ml-2" href="{{ url_for('booky.top_add') }}"> Add to Top 1000 </a>
+        </a>
+    </div>
+
+    <div class="border-top pt-3">
+        <a class="text-muted">
+            <a class="ml-2" href="{{ url_for('booky.updateBook') }}"> Update book data</a>
+        </a>
+    </div>
+    <div class="border-top pt-3">
+        <a class="text-muted">
+            <a class="ml-2" href="{{ url_for('booky.deleteBook') }}"> Delete item from list</a>
+        </a>
+    </div>
+    <div class="border-top pt-3">
+        <a class="text-muted">
+            <a class="ml-2" href="{{ url_for('booky.add_capture') }}"> Capture data from video </a>
+        </a>
+    </div>
+    <div class="border-top pt-3">
+        <a class="text-muted">
+            <a class="ml-2" href="{{ url_for('booky.add_image') }}"> Grab data from image </a>
+        </a>
+    </div>
+    <div class="border-top pt-3">
+        <a class="text-muted">
+            <a class="ml-2" href="{{ url_for('booky.add_text') }}"> Grab data from text file </a>
+        </a>
+    </div>
+
+</div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        <a class="ml-2" href="{{ url_for('main.index')}}"> Return to Home Page</a>
+    </small>
+</div>
+</div>
+{% endblock content %}

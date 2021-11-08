@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<h5> Choose image</h5>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<input type="file" name="file" class="form-control" id="file" onchange="readURL(this);" accept=".png, .jpg, .jpeg"/>
+<br>
+<img id="blah" src="" class="" width="475" height="275"/>
+
+<div class="col-lg-8">
+    <h5><br>
+        <input type="button" class="btn btn-primary" id="btnGet" name="btnGet" value="Get text"/>
+    </h5>
+</div>
+<br>
+<form action="" method="POST">
+        <textarea id="textArea" name="recipients" class="form-control">
+                {{textAreaData}}
+        </textarea>
+                {{ form.hidden_tag() }}
+<fieldset class="form-group">
+
+        <legend class="border-bottom mb-4"><span style="margin: 4px"> <h5>Drag and drop data from text box</h5></span></legend>
+
+        <div class="form-group">
+            {{ form.author.label(class="form-control-label") }}
+            {% if form.author.errors %}
+            {{ form.author(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.author.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ form.author(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.title.label(class="form-control-label") }}
+            {% if form.title.errors %}
+            {{ form.title(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.title.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ form.title(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+    </fieldset>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info") }}
+    </div>
+</form>
+
+<script>
+    function readURL(input, id) {    id = id || '#blah';
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+    $(id)
+    .attr('src', e.target.result)
+    .width(475)
+    .height(275);
+    };
+    reader.readAsDataURL(input.files[0]);
+    }
+    }
+</script>
+
+<script type="text/javascript">
+    var imgEl = document.getElementById('blah');
+
+    // Upload image to server - ajax call - with the help of base64 data as a parameter
+    $("#btnGet").click(function () {
+
+    textAreaElement = document.getElementById('textArea');
+    textAreaElement.innerText = "Please wait, data onloading...";
+
+    // imgEl to be trans to canvas
+    var destinationCanvas = document.createElement("canvas");
+    var destCtx = destinationCanvas.getContext('2d');
+
+    destinationCanvas.height = 300;
+    destinationCanvas.width = 500;
+
+    destCtx.drawImage(imgEl, 0, 0);
+
+    // Get base64 data to send to server for upload
+    var imagebase64data = destinationCanvas.toDataURL("image/png");
+    imagebase64data = imagebase64data.replace('data:image/png;base64,', '');
+
+    const obj = {img: imagebase64data};
+    const myJSON = JSON.stringify(obj);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'http://127.0.0.1:5000/book/modify/add/image', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(myJSON);
+
+    xhr.onreadystatechange = (e)=>{
+    textAreaElement.innerText = xhr.responseText
+    }
+    });
+</script>
+{% endblock %}

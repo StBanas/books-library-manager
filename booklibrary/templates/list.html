@@ -1,0 +1,138 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<h5>List of books in Library</h5>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th {
+    color: blue;
+    font-weight: bold;
+    width: 300px;
+  text-align: left;
+  padding: 3px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+   color: green;
+    font-weight: bold;
+    hight: 40px;
+
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+<!--#myInput1 {-->
+<!--  background-image: url('/css/searchicon.png');-->
+<!--  background-position: 10px 10px;-->
+<!--  background-repeat: no-repeat;-->
+<!--  width: 100%;-->
+<!--  font-size: 16px;-->
+<!--  padding: 12px 20px 12px 40px;-->
+<!--  border: 1px solid #ddd;-->
+<!--  margin-bottom: 12px;-->
+<!--}-->
+
+</style>
+
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search authors .." title="Type in an author">
+
+<script>
+    function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+    txtValue = td.textContent || td.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    tr[i].style.display = "";
+    } else {
+    tr[i].style.display = "none";
+    }
+    }
+    }
+    }
+</script>
+<!--<input type="text" id="myInput1" onkeyup="myFunction1()" placeholder="Search titles .." title="Type in a title">-->
+<!--<script>-->
+<!--    function myFunction1() {-->
+<!--    var input, filter, table, tr, td, i, txtValue;-->
+<!--    input = document.getElementById("myInput1");-->
+<!--    filter = input.value.toUpperCase();-->
+<!--    table = document.getElementById("myTable");-->
+<!--    tr = table.getElementsById("T");-->
+<!--    for (i = 0; i < tr.length; i++) {-->
+<!--    td = tr[i].getElementsById("title")[0];-->
+<!--    if (td) {-->
+<!--    txtValue = td.textContent || td.innerText;-->
+<!--    if (txtValue.toUpperCase().indexOf(filter) > -1) {-->
+<!--    tr[i].style.display = "";-->
+<!--    } else {-->
+<!--    tr[i].style.display = "none";-->
+<!--    }-->
+<!--    }-->
+<!--    }-->
+<!--    }-->
+<!--</script>-->
+
+<form action="" method="POST">
+
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {{ form.hidden_tag() }}
+        </tbody>
+
+    </table>
+</form>
+<table id="myTable"  width=80%, style=" padding: 10px; border: 1px solid grey;  background-color: #ffdadd; padding: 10px; box-shadow: 3px 3px grey;">
+    <thead>
+    <tr>
+        <th scope="#" >Author</th>
+        <th scope="#">Title</th>
+    </tr>
+    </thead>
+    {% for book in books %}
+    <tr Id="T">
+        <td Id="author">{{book.author}}</td>
+        <td Id="title">{{book.title}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock content %}

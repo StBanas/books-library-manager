@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<h5 xmlns="http://www.w3.org/1999/html"><br> Welcome to the Library. </h5> <br>
+
+<h6> <b id="head" style="font-size 24px">I</b>n this API you can manage your own collection of books.</h6><br>
+
+    <h6> <b style="font-size 24px">I</b>t is recommended to register/login to create your own bookshelf and modify it.
+    Once you are registered you get an access to your collection and advance your books to Top 1000 list. You can obtain the registration page both clicking in the "Registration" banner
+        at the top manu bar or clicking in the button
+        <button formtarget="_blank" type="submit" onclick="registration_entry">
+            <a href="http://127.0.0.1:5000/register" style="scroll-behavior: smooth;">
+                <b style="font-size: 5px; font: 80% Verdana; color: #245272; background-color: #f2e6ff">"Registration" </b></a><br></button></h6><br>
+<h6> <b style="font-size 24px">I</b>n order to add new book you can use one of the manners available in
+    <button formtarget="_blank" type="submit" onclick="modify_entry">
+    <a href="http://127.0.0.1:5000/book/modify/mode" style="scroll-behavior: smooth;">
+        <b style="font-size: 5px; font: 80% Verdana; color: #245272; background-color: #f2e6ff">"Modify entry" </b></a><br></button> menu.</h6> <br>
+
+<h6> <b style="font-size 24px">I</b>t is possible to insert required data in one of the choosen manner:</h6>
+
+<h6>  - Manually from keybord -  <button formtarget="_blank" type="submit" onclick="add_new_book">
+    <a href="http://127.0.0.1:5000/book/modify/add/mode/manual" style="scroll-behavior: smooth;">
+        <b style="font-size: 5px; font: 80% Verdana; color: #245272; background-color: #f2e6ff">"Add new book" </b></a></button></h6>
+
+<h6>      - From any kind of text file accesible in local or remote repository -  <button formtarget="_blank" type="submit" onclick="grab_from_text">
+    <a href="http://127.0.0.1:5000/book/modify/add/mode/text" style="scroll-behavior: smooth;">
+        <b style="font-size: 5px; font: 80% Verdana; color: #245272; background-color: #f2e6ff">"Grab from text" </b></a></button></h6>
+
+
+<h6>  - From any image available from local or remote storage  - <button formtarget="_blank" type="submit" onclick="grab_from_image">
+    <a href="http://127.0.0.1:5000/book/modify/add/image" style="scroll-behavior: smooth;">
+        <b style="font-size: 5px; font: 80% Verdana; color: #245272; background-color: #f2e6ff">"Grab from image" </b></a><br></button></h6>
+
+<h6>  - From video or camera stream - <button formtarget="_blank" type="submit" onclick="capture">
+    <a href="http://127.0.0.1:5000/book/modify/add/capture" style="scroll-behavior: smooth;">
+        <b style="font-size: 5px; font: 80% Verdana; color: #245272; background-color: #f2e6ff">"Capture" </b></a></button></h6><br>
+
+<h6><b style="font-size 24px">A</b>ccesing <button formtarget="_blank" type="submit" onclick="entry">
+    <a href="http://127.0.0.1:5000/book/modify/mode" style="scroll-behavior: smooth;">
+        <b style="font-size: 5px; font: 80% Verdana; color: #245272; background-color: #f2e6ff">"Modify entry" </b></a></button>
+            menu options it is possible also <button formtarget="_blank" type="submit" onclick="update">
+ <a href="http://127.0.0.1:5000/book/modify/mode/update" style="scroll-behavior: smooth;">
+        <b style="font-size: 5px; font: 80% Verdana; color: #245272; background-color: #f2e6ff">"Update" </b></a></button>
+    or <button formtarget="_blank" type="submit" onclick="update">
+    <a href="http://127.0.0.1:5000/book/modify/mode/delete" style="scroll-behavior: smooth;">
+        <b style="font-size: 5px; font: 80% Verdana; color: #245272; background-color: #f2e6ff">"Delete" </b></a></button> the data from the list. </h6><br>
+
+ <h6> <b style="font-size 24px">L</b>ist of collected books can be find in <button formtarget="_blank" type="submit" onclick="list">
+    <a href="http://127.0.0.1:5000/book/list" style="scroll-behavior: smooth;">
+        <b style="font-size: 5px; font: 80% Verdana; color: #245272; background-color: #f2e6ff">"Book list" </b></a><br></button> option. <br></h6>
+<h6>
+    <br>
+<b style="font-size 24px">P</b>ressing the button  <button formtarget="_blank" type="submit" onclick="top">
+    <a href="http://127.0.0.1:5000/book/top/list" style="scroll-behavior: smooth;">
+        <b style="font-size: 5px; font: 80% Verdana; color: #245272; background-color: #f2e6ff">"Top 1000" </b></a><br>
+</button> you can find the list of my favourite books.<br>
+<br></h6>
+<br>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        <a class="ml-2" href="{{ url_for('users.login')}}"> Go to login</a>
+    </small>
+</div>
+
+
+{% endblock %}

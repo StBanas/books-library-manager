@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h4>Delete book</h4>
+
+<style>
+table tr {
+    color: red;
+    font-weight: ;
+    hight: 40px;
+}
+table th {color: blue;
+    font-weight: bold;
+    width: 400px;
+    }
+
+    </style>
+
+<form action="" method="POST">
+
+<table id="table_id">
+<thead>
+    <tr >
+        <th scope="#">Author</th>
+        <th scope="#">Title</th>
+        <th scope="#">Action</th>
+    </tr>
+</thead>
+{% for book in books %}
+    <tr>
+        <td>{{book.author}}</td>
+        <td>{{book.title}}</td>
+        <td><a href="{{ url_for('booky.delete_book', book_id=book.id) }}">delete</a></td>
+    </tr>
+{% endfor %}
+</table>
+</form>
+{% endblock content %}

@@ -18,10 +18,6 @@ maintain titles and authors within the list.Those are input, update or delete se
 This is because the remote access to the camera is not possible in this demo.  not possible from this level.</br>
 <b style="font-size 24px">T</b>he other functionalites can be used freely. </br>
 
-### Most recent information - 8.11.2021 hr 10:25am
-
-<b style="font-size 24px">I</b>t seems that functionality of capture the data from video doesn't work in Chrome browser. </br>
-
 
 
 

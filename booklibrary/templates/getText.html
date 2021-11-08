@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<title> Text Reader </title>
+<div class="content-section">
+    <br/>
+    <h5><b> Choose the file with book data </b></h5> <br>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <input name="file" type="file" id="files" class="form-control" value="">
+
+    <script> function readTextFile(file, callback, encoding) {
+    var reader = new FileReader();
+    reader.addEventListener('load', function (e) {
+    callback(this.result);
+    });
+
+    if (encoding) reader.readAsText(file, encoding);
+    else reader.readAsText(file);
+    }
+
+    function fileChosen(input, output) {
+    if (input.files && input.files[0]) {
+    readTextFile(
+    input.files[0],
+    function (str) {
+    output.value = str;
+    }
+    );
+    }
+    }
+    $('#files').on('change', function () {
+    fileChosen(this, document.getElementById('recipients'));
+    });
+    </script>
+
+    <div class="content-section">
+
+        <form action="" method="POST">
+        <textarea id="recipients" name="recipients" class="form-control">
+                {{ocr_text }}
+        </textarea>
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" style="padding: 10px"><h5>Drag and drop data from text box </h5></legend>
+
+                <div class="form-group">
+                    {{ form.author.label(class="form-control-label") }}
+                    {% if form.author.errors %}
+                    {{ form.author(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.author.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.author(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.title.label(class="form-control-label") }}
+                    {% if form.title.errors %}
+                    {{ form.title(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.title.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.title(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+            </fieldset>
+
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

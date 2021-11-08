@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<h5> Top 1000</h5>
+
+<style>
+table tr {
+    color: green;
+    font-weight: bold;
+    hight: 40px;
+}
+table th {color: blue;
+    font-weight: bold;
+    width: 300px;
+    }
+</style>
+
+<form action="" method="POST">
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{ form.hidden_tag() }}
+        </tbody>
+
+    </table>
+</form>
+<table id="table_id" width=80%, style=" border: 1px solid grey;  background-color: #ffdadd; padding: 10px; box-shadow: 3px 3px grey;">
+<thead>
+    <tr >
+        <th scope="#">Author</th>
+        <th scope="#">Title</th>
+    </tr>
+</thead>
+{% for top in tops %}
+    <tr>
+
+        <td>{{top.author1}}</td>
+        <td>{{top.title1}}</td>
+    </tr>
+{% endfor %}
+</table>
+
+
+{% endblock content %}

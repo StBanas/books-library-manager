@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<title>Help</title>
+
+<h5> Select the help context</h5>
+<div class="content-section">
+    <div class="form-group">
+    </div>
+    <div class="border-top pt-3">
+        <a class="text-muted">
+            <a class="ml-2" href="{{ url_for('helps.description') }}"> Description </a>
+        </a>
+    </div>
+    <div class="border-top pt-3">
+        <a class="text-muted">
+            <a class="ml-2" href="{{ url_for('helps.howTo') }}"> How To? </a>
+        </a>
+    </div>
+</div>
+
+<div class="border-top pt-3">
+    <small class="text-muted">
+        <a class="ml-2" href="{{ url_for('main.index')}}"> Return to Home Page</a>
+    </small>
+</div>
+{% endblock content %}

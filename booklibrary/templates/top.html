@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content-section">
+<form action="" method="POST">
+            {{ form.hidden_tag() }}
+    <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Enter new top 1000 data</legend>
+
+                <div class="form-group">
+                    {{ form.author1.label(class="form-control-label") }}
+                    {% if form.author1.errors %}
+                        {{ form.author1(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.author1.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.author1(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+        <div class="form-group">
+                    {{ form.title1.label(class="form-control-label") }}
+                    {% if form.title1.errors %}
+                        {{ form.title1(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.title1.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.title1(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+</fieldset>
+
+        <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+</form>
+</div>
+
+{% endblock content %}

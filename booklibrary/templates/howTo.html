@@ -1,0 +1,62 @@
+{%extends "layout.html"%}
+{% block content%}
+
+<h5 xmlns="http://www.w3.org/1999/html"><b> This is to instruct how to use the API "Library".</b></h5>
+</br>
+<h6 xmlns="http://www.w3.org/1999/html"><b>I. Data base creation.</b></h6>
+
+<div id="howTo1" style="50">
+    <b style="font-size 24px">B</b>efore start the application the database for books and users have to be initialised.
+    It can be obtained by runing the <b>db-init.py</b> program located in <u><b>utils</b></u> modul. This feature can be run only
+        once before running the main application. The data will be stored in <b>users</b> and <b>books</b> tables in the <b>dbase.db</b>
+        database.</br></br>
+
+</div>
+<h6 xmlns="http://www.w3.org/1999/html"><b>II.  Login and access to the modification options.</b></h6>
+<div id="howTo2" style="50">
+    <b style="font-size 24px">W</b>hen users log in to the application, their authenticated state has to be recorded in
+        the user session, so that it is remembered as they navigate through different pages.
+        Flask-Login is a small but extremely useful extension that specializes in managing
+        this particular aspect of a user authentication system, without being tied to a specific
+        authentication mechanism.</br></br>
+
+</div>
+<h6 xmlns="http://www.w3.org/1999/html"><b>III. Credentials reset.</b></h6>
+<div id="howTo3" style="50">
+    <b style="font-size 24px">O</b>nce user log in to the application, he/she can change their passwords periodically. This is
+    an easy feature to implement, because as long as the user is logged in, it is safe to
+    present a form that asks for the old password and a new password to replace it.
+    As part of this change, the “Logout” link in the navigation bar is refactored into a dropdown
+    that contains the “Change Password” and “Logout” links. </br>
+
+</div></br>
+    <h6 xmlns="http://www.w3.org/1999/html"><b>IIII.  Password forgotten.</b></h6>
+<div id="howTo4" style="50">
+    <b style="font-size 24px">T</b>o avoid locking users out of the application when they forget their passwords, a
+    password reset option is offered. When a user requests a password reset, an email with a reset token is sent to the
+    registered email address. This is the Admin's job to send back new password to the user after the
+    token is verified.</br></br>
+
+</div>
+        <h6 xmlns="http://www.w3.org/1999/html"><b>V.  Top 1000 collection.</b></h6>
+<div id="howTo5" style="50">
+    <b style="font-size 24px">I</b>n order to add your Book to the T0p 1000 collection .</br></br>
+
+
+
+</div>
+
+<div><h6 xmlns="http://www.w3.org/1999/html"><b>VI. Navigation.</b></h6>
+
+<b style="font-size 24px">T</b>he Standard way of navigation with directory arrows pad is implemented for navigation.<br>
+<b style="font-size 24px">A</b>lso menu bar navigation lets to enter the highlighted options.<br>
+<b style="font-size 24px">T</b>o choose the option from vertical menus just click the field with the highlighted option.<br>
+<br><br>
+</div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        <a class="ml-2" href="{{ url_for('helps.help')}}"> Return to Help Page</a>
+    </small>
+</div>
+
+{% endblock %}

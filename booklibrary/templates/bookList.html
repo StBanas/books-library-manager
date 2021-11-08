@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h4>Enter new book</h4>
+<tbody>
+{{ form.hidden_tag() }}
+<tr>
+    <td>
+        <a>OCR</a>
+        <textarea>
+           {{ ocr_text }}
+        </textarea>
+    </td>
+
+    <td>
+        {{ form.ocr_text }}
+        {% for error in form.ocr_text.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </td>
+</tr>
+</tbody>
+
+
+<form action="" method="POST">
+
+    <table>
+
+        <tbody>
+        {{ form.hidden_tag() }}
+        <tr>
+            <td>
+                {{ form.author.label }}
+            </td>
+            <td>
+                {{ form.author }}
+                {% for error in form.author.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </td>
+            <td>
+                {{ form.title.label }}
+            </td>
+            <td>
+                {{ form.title }}
+                {% for error in form.title.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </td>
+        </tr>
+        </tbody>
+
+        <tfoot>
+        <tr>
+            <th>
+                {{ form.submit() }}
+            </th>
+        </tr>
+        </tfoot>
+
+    </table>
+</form>
+<table id="table_id">
+    <thead>
+    <tr>
+        <th scope="#">Id</th>
+        <th scope="#">Author</th>
+        <th scope="#">Title</th>
+        <th scope="#">Action</th>
+    </tr>
+    </thead>
+    {% for book in books %}
+    <tr>
+        <td>{{books.id}}</td>
+        <td>{{books.author}}</td>
+        <td>{{books.title}}</td>
+        <td><a href="{{ url_for('delete_book', books_id=books.id) }}">delete</a></td>
+        <td><a href="{{ url_for('update_book', books_id=books.id) }}">update</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

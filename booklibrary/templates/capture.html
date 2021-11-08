@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<h5> Get image from video </h5>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<div class="jumbotron" style="margin-top:5px;padding:5px;">
+    <p><span id="errorMsg"></span></p>
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Here we streaming video from webcam -->
+            <h5>
+                <button class="btn btn-primary" id="btnCapture"> Capture image</button>
+            </h5>
+            <video id="video" playsinline autoplay></video>
+        </div>
+
+        <div class="col-lg-8">
+            <h5>
+                <input type="button" class="btn btn-primary" id="btnSave" name="btnSave"
+                       value="Save image"/>
+            </h5>
+
+            <!-- Webcam video snapshot -->
+            <canvas style="border:solid 1px #ddd;background-color:white;" id="canvas" width="480" height="270"></canvas>
+        </div>
+    </div>
+</div>
+
+
+
+<form action="" method="POST">
+        <textarea id="textArea" name="recipients" class="form-control">
+                {{textAreaData}}
+        </textarea>
+    {{ form.hidden_tag() }}
+    <fieldset class="form-group">
+
+        <legend class="border-bottom mb-4"> <h5> Drag and drop data from text box </h5></legend>
+
+        <div class="form-group">
+            {{ form.author.label(class="form-control-label") }}
+            {% if form.author.errors %}
+            {{ form.author(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.author.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ form.author(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.title.label(class="form-control-label") }}
+            {% if form.title.errors %}
+            {{ form.title(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+                {% for error in form.title.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ form.title(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+
+
+    </fieldset>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info") }}
+    </div>
+</form>
+
+<script type="text/javascript">
+    var video = document.querySelector("#video");
+
+    // Basic settings for the video to get from Webcam
+    const constraints = {
+    audio: false,
+    video: {
+    width: 480, height: 270
+    }
+    };
+
+    // This condition will ask permission to user for Webcam access
+    if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia(constraints)
+    .then(function (stream) {
+    video.srcObject = stream;
+    })
+    .catch(function (err0r) {
+    console.log("Something went wrong!");
+    });
+    }
+
+    function stop(e) {
+    var stream = video.srcObject;
+    var tracks = stream.getTracks();
+
+    for (var i = 0; i < tracks.length; i++) {
+    var track = tracks[i];
+    track.stop();
+    }
+    video.srcObject = null;
+    }
+</script>
+
+<script type="text/javascript">
+    // Below code to capture image from Video tag (Webcam streaming)
+    $("#btnCapture").click(function () {
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    // Capture the image into canvas from Webcam streaming Video element
+    context.drawImage(video, 0, 0);
+    });
+
+    // Upload image to server - ajax call - with the help of base64 data as a parameter
+    $("#btnSave").click(function () {
+
+    // Below new canvas to generate flip/mirron image from existing canvas
+    var destinationCanvas = document.createElement("canvas");
+    var destCtx = destinationCanvas.getContext('2d');
+
+    textAreaElement = document.getElementById('textArea');
+
+    textAreaElement.innerText = "Please wait, data onloading...";
+
+    destinationCanvas.height = 270;
+    destinationCanvas.width = 480;
+
+    destCtx.translate(video.videoWidth, 0);
+    destCtx.scale(-1, 1);
+    destCtx.drawImage(document.getElementById("canvas"), 0, 0);
+
+    // Get base64 data to send to server for upload
+    var imagebase64data = destinationCanvas.toDataURL("image/png");
+    imagebase64data = imagebase64data.replace('data:image/png;base64,', '');
+
+    const obj = {img: imagebase64data};
+    const myJSON = JSON.stringify(obj);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'http://127.0.0.1:5000/book/modify/add/capture', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(myJSON);
+
+    xhr.onreadystatechange = (e)=>{
+    textAreaElement.innerText = xhr.responseText
+    }
+    });
+</script>
+{% endblock %}
