@@ -184,14 +184,11 @@ def deleteBook():
         return redirect(url_for("booky.deleteBook"))
     return render_template("delete.html", title="Delete", form=form, books=books)
 
-
-
 # Create modify endpoint
 @booky.route('/book/modify/mode', methods=['GET', 'POST'])
 @login_required
 def modify_mode():
     return render_template("modify.html", title="Mode")
-
 
 # Get List of All Books
 @booky.route('/book/list', methods=['GET'])
@@ -199,28 +196,6 @@ def get_books():
     form = BookForm(request.form)
     books = Book.query.all()
     return render_template("list.html", title="List", form=form, books=books)
-
-# TODO -replace one out of two
-# # Delete Book
-# @booky.route("/book/modify/delete/<int:book_id>", methods=["GET", "POST"])
-# def delete_book(book_id):
-#     books = Book.query.get(book_id)
-#     db.session.delete(books)
-#     db.session.commit()
-#     return render_template("modify.html", title="Delete")
-
-#  TODO -replace one out of two
-#  Update Book
-# @booky.route("/book/modify/update/<int:book_id>", methods=["GET", "POST"])
-# def update_book(book_id):
-#     books = Book.query.get(book_id)
-#     form = BookForm(request.form, obj=books)
-#     if form.validate_on_submit():
-#         form.populate_obj(books)
-#         db.session.commit()
-#         flash("Updated Book Successfully")
-#         return redirect(url_for("main.updateBook"))  # TODO
-#     return render_template("update.html", title="Update", form=form, books=books)
 
 # Top 1000
 @booky.route('/book/top/list', methods=['GET'])
@@ -230,8 +205,7 @@ def top():
     tops = Top.query.all()
     return render_template('topList.html', title="TopList", form=form, tops=tops)
 
-
-# Top 1000
+# Top 1000 add
 @booky.route('/book/top/list/add', methods=['GET', 'POST'])
 @login_required
 def top_add():
@@ -257,7 +231,7 @@ def deleteTop():
         return redirect(url_for("booky.deleteTop"))
     return render_template("deleteTop.html", title="Delete", form=form, tops=tops)
 
-# Delete Book
+# Create delete Book
 @booky.route("/book/modify/delete/<int:book_id>", methods=["GET", "POST"])
 @login_required
 def delete_book(book_id):

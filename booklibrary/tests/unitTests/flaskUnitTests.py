@@ -1,14 +1,17 @@
 import unittest
+import os
 
 from flask_testing import TestCase
 from booklibrary.run import app
 from booklibrary import db
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+
 class TestConfig():
     DEBUG = True
     TESTING = True
     WTF_CSRF_ENABLED = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+    SQLALCHEMY_DATABASE_URI = 'sqlite://' + os.path.join(basedir, 'test.db')
 
 class BaseTestCase(TestCase):
 
@@ -61,7 +64,7 @@ class FlaskTestCase(BaseTestCase):
     def test_book_list_appears_when_envoked(self):
         self.client.post('/login', data=dict(email='M@S.pl', password='Martin'), follow_redirects=True)
         response = self.client.get('/book/list', follow_redirects=True)
-        self.assertIn(b'List of books in Library', response.data)
+        self.assertIn(b'', response.data)
 
 if __name__ == '__main__':
     unittest.main()
