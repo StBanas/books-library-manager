@@ -1,7 +1,6 @@
 import os
 import sqlite3
 
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 conn = sqlite3.connect('../booklibrary/dbase.db')

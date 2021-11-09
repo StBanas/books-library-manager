@@ -47,10 +47,11 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            # next_page = request.args.get('next') TODO - implement next_page mechanism
-            return redirect(url_for('main.index'))   # TODO - as per line 50 return redirect(next_page) if next_page else redirect(url_for('main.index'))
+            flash('Login Successful. You are now logged in!', 'success')
+            return redirect(url_for('users.login'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
+            return redirect(url_for('users.login'))
     return render_template('login.html', title='Login', form=form)
 
 
@@ -58,7 +59,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('users.logout'))
 
 
 @users.route("/account", methods=['GET', 'POST'])

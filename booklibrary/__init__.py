@@ -8,6 +8,7 @@ from booklibrary.config import Config
 from flask_marshmallow import Marshmallow
 
 
+
 ma = Marshmallow()
 db = SQLAlchemy()
 migrate = Migrate(db)

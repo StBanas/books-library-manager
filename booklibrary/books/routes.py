@@ -33,7 +33,6 @@ books_schema = BookSchema(many=True)
 top_schema = TopSchema()
 tops_schema = TopSchema(many=True)
 
-
 # Add Book from image
 @booky.route('/book/modify/add/image', methods=['GET', 'POST'])
 @login_required
@@ -41,7 +40,6 @@ def add_image():
     image_dir = os.path.abspath(os.path.dirname(__file__))
     print("images are here: " + image_dir)
     form = BookForm(request.form)
-    # books = Book.query.all() TODO is that line necessary
     data = request.get_json()
     textAreaData = ""
     if (data != None):
@@ -55,8 +53,7 @@ def add_image():
                 print("ocr.text ready")
                 reader = easyocr.Reader(['pl'])
                 textAreaData = reader.readtext(
-                    'C:\\Users\\48695\\Desktop\\CodersLab\\book-resource-manager\\web-app\\book-manager\\booklibrary\\templates\\view.png', detail=0)
-                    # TODO - absoluth PATH !
+                    'templates\\view.png', detail=0)
                 for i in textAreaData:
                     f.write(i + " ")
                     f.close()
@@ -71,12 +68,11 @@ def add_image():
             url_for("booky.add_image"))  # TODO - in "getImage.html" to getElementById( id of inside thr image/button )
     return render_template('getImage.html', title="Image", textAreaData=textAreaData, form=form)  # TODO : removed fot check , books=books
 
-# Add Book from Capture Page
+# Add Book from Capture
 @booky.route('/book/modify/add/capture', methods=['GET', 'POST'])
 @login_required
 def add_capture():
     form = BookForm(request.form)
-    # books = Book.query.all()  TODO - check if necessary !
     data = request.get_json()
     textAreaData = ""
     if (data != None):
@@ -88,18 +84,16 @@ def add_capture():
                     im = Image.open('templates/view.png')
                     im_mirror = ImageOps.mirror(im)
                     im_mirror.save('templates/view.png', quality=95)
-                    # need to run only once to load model into memory
-            with open("templates/ocr.txt", "w") as f:  #TODO - absoluth PATH !
-                # TODO - try required toavoid empty file
-                print("ocr.text ready")
-                reader = easyocr.Reader(['pl'])
-                textAreaData = reader.readtext('C:\\Users\\48695\\Desktop\\CodersLab\\book-resource-manager\\web-app\\book-manager\\booklibrary\\templates\\view.png', detail=0)
-                    # TODO - absoluth PATH !  'C:\\Users\\48695\\Desktop\\CodersLab\\book-resource-manager\\web-app\\book-manager\\templates\\view.png', detail=0
 
+            with open("templates/ocr.txt", "w") as f:
+
+                reader = easyocr.Reader(['pl'])
+                textAreaData = reader.readtext('templates\\view.png', detail=0)
                 for i in textAreaData:
                     f.write(i + " ")
                     f.close()
                     return " ".join(textAreaData)
+                print("ocr.text ready")
         except:
             AttributeError: print("AttributeError occured - process terminated")
     if form.validate_on_submit():
