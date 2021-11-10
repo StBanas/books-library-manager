@@ -14,15 +14,16 @@ maintain titles and authors within the list.Those are input, update or delete se
 
 | No | Used |     Technology      |
 |------|----------|----------|
-| 1    |  [booklibrary, backend](https://github.com/StBanas/books-library-manager/blob/main/booklibrary) |[Python, Flask ]()|
-| 2    |  [templates, frontend](https://github.com/StBanas/books-library-manager/tree/main/booklibrary/templates) |[JavaScript, JQuery, HTML, CSS]()|
-| 3    | [EasyOCR](https://github.com/StBanas/books-library-manager/blob/main/booklibrary/books/routes.py) |[Python, ]()|
-| 5    |  [Web](https://github.com/StBanas/books-library-manager)  |[Python, HTML ]()|
+| 1    | [backend, config ](https://github.com/StBanas/books-library-manager/booklibrary/) |[Python, Flask ]()|
+| 2    | [frontend ](https://github.com/StBanas/books-library-manager/booklibrary/templates) |[JavaScript, JQuery, HTML, CSS, JSON]()|
+| 3    | [OCR](https://github.com/StBanas/books-library-manager/blob/main/booklibrary/books/routes.py) |[Python,]()|
+| 4    | [databases](https://github.com/StBanas/books-library-manager/blob/main/booklibrary/__init__.py) |[Python, SQLAlchemy, sqlite, ]()|[]()|
+| 5    | [REST API](https://github.com/StBanas/books-library-manager)  |[Python, HTML, CSS ]()|
+| 6    | [documentation](https://github.com/StBanas/books-library-manager/specification.md) |[markdown]()|
 | 7    | [dbase test](https://github.com/StBanas/books-library-manager/blob/main/booklibrary/sqlTest.py)  |[Python, Flask, SQLAlchemy ]()|
-| 8    |  [sql](https://github.com/realpython/discover-flask/tree/part9) |[Python, SQLAlchemy, sqlite, ]()|
-| 9  |  [simpleUnitTests](https://github.com/StBanas/books-library-manager/tree/main/booklibrary/tests/unitTests/simpleUnitTests.py) |[Python, unitTests]()|
-| 10   |  [seleniumTest](https://github.com/StBanas/books-library-manager/tree/main/booklibrary/tests/automatedTests/seleniumTest.py) |[Python, Selenium]()|
-| 11   |  [flaskUnitTests](https://github.com/StBanas/books-library-manager/tree/main/booklibrary/tests/unitTests/flaskUnitTests.py) |[Python, Flask, unitTests]()|
+| 8    | [simpleUnitTests](https://github.com/StBanas/books-library-manager/tree/main/booklibrary/tests/unitTests/simpleUnitTests.py)|[Python, unitTests]()|
+| 9    | [flaskUnitTests](https://github.com/StBanas/books-library-manager/tree/main/booklibrary/tests/unitTests/flaskUnitTests.py)|[Python, Flask, unitTests]()|
+| 10   | [seleniumTest](https://github.com/StBanas/books-library-manager/tree/main/booklibrary/tests/automatedTests/seleniumTest.py) |[Python, Selenium]()|
 
 
 # Demo 
