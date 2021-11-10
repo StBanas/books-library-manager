@@ -144,7 +144,7 @@
     const myJSON = JSON.stringify(obj);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", 'http://127.0.0.1:5000/book/modify/add/capture', true);
+    xhr.open("POST", 'http://srv08.mikr.us:30384/book/modify/add/capture', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(myJSON);
 

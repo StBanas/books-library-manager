@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-PATH = "C:\Program Files (x86)\chromedriver.exe"
+PATH = "chromedriver.exe"
 
 
 class BookAdd(unittest.TestCase):
@@ -17,18 +17,18 @@ class BookAdd(unittest.TestCase):
     def test_add_new(self):
         driver = self.driver
         driver.get(self.base_url)
-        element = driver.find_element_by_id ("author")
+        element = driver.find_element_by_name ("author")
         try:
             element.clear()
         except:
             print("an exception occured")
-        element.send_keys("Vladimir Nabokow")
-        element = driver.find_element_by_id ("title")
+        element.send_keys("Vladimir Nabokov")
+        element = driver.find_element_by_name ("title")
         try:
             element.clear()
         except:
             print("an exception occured")
-        element.send_keys("Lolita")
+        element.send_keys("Pale Fire")
         # element.submit()
         element.send_keys(Keys.RETURN)
         WebDriverWait(driver, 300).until(expected_conditions.title_contains("Library"))
