@@ -118,7 +118,7 @@ def modify_add_json():
 
 # Create add _manual endpoint
 @booky.route('/book/modify/add/mode/manual', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def addManual():
     form = BookForm(request.form)
     books = Book.query.all()
@@ -231,7 +231,7 @@ def deleteTop():
         return redirect(url_for("booky.deleteTop"))
     return render_template("deleteTop.html", title="Delete", form=form, tops=tops)
 
-# Create delete Book
+# Create delete Book endpoint
 @booky.route("/book/modify/delete/<int:book_id>", methods=["GET", "POST"])
 @login_required
 def delete_book(book_id):

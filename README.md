@@ -12,10 +12,10 @@ maintain titles and authors within the list.Those are input, update or delete se
 
 ## Technologies used
 
-| No | Used |     Technology      |
+| No | Area of use   |     Technology      |
 |------|----------|----------|
-| 1    | [backend, config ](https://github.com/StBanas/books-library-manager/booklibrary/) |[Python, Flask ]()|
-| 2    | [frontend ](https://github.com/StBanas/books-library-manager/booklibrary/templates) |[JavaScript, JQuery, HTML, CSS, JSON]()|
+| 1    | [backend, config ](https://github.com/StBanas/books-library-manager/tree/main/booklibrary) |[Python, Flask ]()|
+| 2    | [frontend ](https://github.com/StBanas/books-library-manager/tree/main/booklibrary/templates) |[JavaScript, JQuery, HTML, CSS, JSON]()|
 | 3    | [OCR](https://github.com/StBanas/books-library-manager/blob/main/booklibrary/books/routes.py) |[Python,]()|
 | 4    | [databases](https://github.com/StBanas/books-library-manager/blob/main/booklibrary/__init__.py) |[Python, SQLAlchemy, sqlite, ]()|[]()|
 | 5    | [REST API](https://github.com/StBanas/books-library-manager)  |[Python, HTML, CSS ]()|

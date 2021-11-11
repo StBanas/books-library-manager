@@ -5,7 +5,6 @@ from flask import Blueprint
 
 test = Blueprint('test', __name__)
 
-
 ma = Marshmallow(booklibrary)
 
 # Help Page/tests
